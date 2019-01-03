@@ -1,0 +1,20 @@
+.container{
+    margin-top: 20vw;
+
+}
+
+
+
+.height-adjust{
+    height: 10vw;
+}
+@media only screen and (max-width: 767px)
+{
+    .container{
+        margin-top: 45vw;
+
+    }
+    .height-adjust{
+        height: 30vw;
+    }
+}

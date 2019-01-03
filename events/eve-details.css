@@ -1,0 +1,13 @@
+.container{
+    margin-top: 10vw;
+}
+.nav-tabs>li>a{
+    color: #bd2130!important;
+    letter-spacing: .1vw;
+    font-weight: 900;
+}
+button{
+ background-color: #bd2130;
+    padding: 1vw;
+    border-color: black;
+}
