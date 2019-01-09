@@ -9,30 +9,51 @@ var config = {
 firebase.initializeApp(config);
 
 function putindiv() {
-    branches = document.getElementById("branches");
+    box = document.getElementsByClassName("container")[0];
+    branches = document.createElement("div");
+    branches.setAttribute("class", "row sec-container");
+
     var database = firebase.database().ref().child('events/');
+    number = 0;
 
-    database.once('value', snap => {
-        snap.forEach(snapshot => {
+    var storage = firebase.storage();
+
+    database.once('value', function (snap) {
+        snap.forEach(function (snapshot) {
             var div = document.createElement('div');
-            var elem = div;
-            elem.setAttribute("class", "col-lg-4")
-// Set color to purple
-            elem.style.color = 'purple';
+            div.setAttribute("class", "col-lg-4 ind-events col-xs-12 ");
 
-// Set the background color to a light gray
-            elem.style.backgroundColor = '#e5e5e5';
-
-// Set the height to 150px
-            elem.style.height = '10vw';
 
             div.id = snapshot.key;
-            div.innerHTML = "<p>" + snapshot.key + "</p>";
-            console.log("showevents('" + snapshot.key + "');");
             div.setAttribute("onclick", "showevents('" + snapshot.key + "');");
-            branches.appendChild(div)
+
+            branches.appendChild(div);
+            number += 1;
+            if (number === 3) {
+                number = 0;
+                box.appendChild(branches);
+                branches = document.createElement("div");
+                branches.setAttribute("class", "row sec-container");
+
+            }
+
+            storage.ref('events/' + snapshot.key + "/branch.svg").getDownloadURL().then(function (url) {
+                // `url` is the download URL for 'images/stars.jpg'
+
+                // This can be downloaded directly:
+
+                // Or inserted into an <img> element:
+                var im = document.createElement('img');
+                im.src = url;
+                div.appendChild(im)
+            }).catch(function (error) {
+                console.log(error)
+                // Handle any errors
+            });
         });
-    });
+        box.appendChild(branches);
+    })
+    ;
 
 }
 

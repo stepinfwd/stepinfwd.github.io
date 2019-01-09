@@ -1,5 +1,5 @@
 .container{
-    margin-top: 10vw;
+    margin-top: 5vw;
 }
 .nav-tabs>li>a{
     color: #bd2130!important;
@@ -10,4 +10,8 @@ button{
  background-color: #bd2130;
     padding: 1vw;
     border-color: black;
+}
+#org1-img{
+    width: 10vw;
+    border-radius: 100%;
 }

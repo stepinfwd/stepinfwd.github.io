@@ -14,29 +14,34 @@ function showdetails(branch, event) {
     var rul = document.getElementById('rules-content');
     var cap = document.getElementById('eve-caption');
     var fee = document.getElementById('eve-fee');
+    var on1 = document.getElementById('org1-name');
+    var op1 = document.getElementById('org1-ph');
 
-
-    //var org = document.getElementsById('organizers');
-
-    database.once('value', snap =>{
+    var storage = firebase.storage();
+    database.once('value', function (snap) {
         document.getElementById('eve-name').innerHTML = event;
         cap.innerHTML = snap.val().caption;
         det.innerText = snap.val().description;
         rul.innerText = snap.val().rules;
         fee.innerHTML = "REGISTRATION FEE: " + snap.val().fee;
+        on1.innerHTML = snap.val().coordinators.crd1.name;
+        op1.innerHTML = snap.val().coordinators.crd1.number;
 
-        storageRef.child('events/'+branch+"/"+event+"/cr1.jpeg").getDownloadURL().then(function(url) {
+
+        storage.ref('events/' + branch + "/" + event + "/cr1.jpg").getDownloadURL().then(function (url) {
             // `url` is the download URL for 'images/stars.jpg'
 
             // This can be downloaded directly:
 
             // Or inserted into an <img> element:
-            var img = document.getElementById('cr1');
-            img.src = url;
-        }).catch(function(error) {
+            console.log(url);
+            var org = document.getElementById('org1-img');
+            org.src = url;
+        }).catch(function (error) {
+            console.log(error)
             // Handle any errors
         });
-})
+    })
 
 }
 
@@ -59,7 +64,7 @@ function pay() {
             });
         }
         else {
-            document.location = "../signup.html"
+            document.location = "../index.html"
         }
     });
 }

@@ -1,9 +1,8 @@
 .ind-events{
     height: 10vw;
-    background-color: lightslategrey;
     letter-spacing: .1vw;
     text-align: center;
-    margin: 1vw;
+    margin-top: 13vw;
     width: 27vw!important;
 
 
@@ -12,8 +11,9 @@
 }
 
 
+
 .container{
-    margin-top: 10vw;
+    margin-top: 0vw;
     width: 90vw!important;
     margin-left: auto;
 
@@ -23,12 +23,12 @@
 {
     .ind-events{
       height: 45vw;
-        margin: .5vw;
+        margin-top: 21vw;
         width: 86vw !important;
 
     }
     .container {
-        margin-top: 16vw;
+        margin-top: 14vw;
     }
 }
 

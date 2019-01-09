@@ -67,7 +67,6 @@ body{
 .event-container{
     width: 90vw;
     margin: 0 auto;
-    margin-top:16vw;
 
 
 }
@@ -93,6 +92,9 @@ body{
     color: black!important;
 }
 
+.event-branches{
+    margin-top: 2vw;
+}
 
 
 
@@ -137,6 +139,10 @@ body{
     .nav.navbar-nav.navbar-right{
         background-color: black;
     }
+    .event-branches{
+        /*margin-top: 90vw;*/
+    }
+
 
 
 
